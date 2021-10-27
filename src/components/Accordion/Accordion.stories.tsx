@@ -24,6 +24,7 @@ MenuCollapsedMode.args = {
     titleValue: 'Menu',
     collapsed: true,
     onChange: callback,
+    items: []
 }
 
 export const UsersUnCollapsedMode = Template.bind({})
@@ -31,11 +32,11 @@ UsersUnCollapsedMode.args = {
     titleValue: 'Menu',
     collapsed: false,
     onChange: callback,
-}
+    items: [{title: 'dima', value: 1}, {title: 'valera', value: 2},
+            {title: 'artem', value: 3}, {title: 'viktor', value: 4}],
 
-// 5 версия
-// export const MenuCollapsedMode = () => <Accordion titleValue={'Menu'} collapsed={true} onChange={callback} />
-// export const UsersUnCollapsedMode = () => <Accordion  titleValue={'Users'} collapsed={false} onChange={callback}/>
+
+}
 
 // 6
 export const ModeChanging: Story<AccordionPropsType> = (args) => {
@@ -45,11 +46,11 @@ export const ModeChanging: Story<AccordionPropsType> = (args) => {
 // collapsed = {value} onChange = {() => setValue(!value) -- поведение которое мы не можем вынести и оно остаеться по дэфолту
 ModeChanging.args = {
     titleValue: 'Users',
+    items: [{title: 'dima', value: 1}, {title: 'valera', value: 2},
+        {title: 'artem', value: 3}, {title: 'viktor', value: 4}],
+    onClick: (value) => {
+        alert(`user with ID ${value} should be happy`)
+    }
 }
 
-//5
-// export const ModeChanging = () => {
-//     const [value, setValue] = useState<boolean>(true);
-//     return <Accordion titleValue={'Users'} collapsed={value} onChange={() => setValue(!value)}/>
-// }
 
