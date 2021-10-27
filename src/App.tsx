@@ -29,7 +29,7 @@ function App(props: any) {
                     setAccordionCollapsed(!accordionCollapsed)
                 }}
             />
-            <UncontrolledRating/>
+            <UncontrolledRating onChange={props.value} />
             {/*<OnOff on={switchOn} onChange={(on) =>{setSwitchOn(on)} }/>*/}
 
             <UncontrolledOnOff onChange={setSwitchOn} />{switchOn.toString()}
