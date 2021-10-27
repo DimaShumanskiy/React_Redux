@@ -1,26 +1,40 @@
-import React, {ChangeEvent, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {action} from "@storybook/addon-actions";
 import {Story} from "@storybook/react";
-import {Simulate} from "react-dom/test-utils";
+import {Select, SelectPropsType} from "./Select";
 
 
 export default {
-    title: 'Select',
-    // component: input,
+    title: 'components/Select',
+    component: Select,
 };
 
-//event
-export const Select = () => {
-    const [parentValue, setParentValue] = useState<string | undefined>("2")
-    const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        setParentValue(e.currentTarget.value)
-    }
-    return <select value={parentValue} onChange={onChange}>
-        <option>none</option>
-        <option value={'1'}>Minsk</option>
-        <option value={'2'}>Moscow</option>
-        <option value={'3'}>Kiev</option>
-    </select>
+const Template: Story<SelectPropsType> = (args) => {
+    const [value, setValue] = useState('2')
+    return <><Select {...args} value={value} onChange={setValue}/></>
 }
+
+export const WithMode = Template.bind({})
+WithMode.args = {
+    items: [
+        {value: '1', title: 'Minsk'},
+        {value: '2', title: 'Moscow'},
+        {value: '3', title: 'Kiev'},
+            ]
+}
+
+export const WithoutValue: Story<SelectPropsType> = (args) => {
+    const [value, setValue] = useState(null)
+    return <><Select value={null} {...args}/></>
+}
+WithoutValue.args = {
+    onChange: action('Value changed'),
+    items: [
+        {value: '1', title: 'Minsk'},
+        {value: '2', title: 'Moscow'},
+        {value: '3', title: 'Kiev'},
+    ]
+}
+
 
 

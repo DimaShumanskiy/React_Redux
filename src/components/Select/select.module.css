@@ -1,0 +1,18 @@
+.content {
+  border: 1px solid silver;
+  width: 120px;
+  padding: 5px;
+}
+.item {
+  position: absolute;
+  border: 1px solid silver;
+  box-shadow: 0px 7px 10px rgb(0 0 0 / 30%);
+  width: 120px;
+  padding: 5px;
+  top: 86px;
+  left: 16px;
+}
+
+.content.active .item{
+  display: block;
+}

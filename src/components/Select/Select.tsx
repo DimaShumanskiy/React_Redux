@@ -1,22 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
+import s from './select.module.css'
 
-type ItemType = {
+export type ItemType = {
     title: string
     value: any
 }
 
-type SelectPropsType = {
-    value: any
+export type SelectPropsType = {
+    value?: any
     onChange: (value: any) => void
     items: ItemType[]
 }
-const Select = (props:SelectPropsType) => {
-    return (
-        <div>
-            <div>{}</div>
-            {props.items.map(i => <div>{i.title}</div>)}
-        </div>
-    );
-};
+export const Select = (props: SelectPropsType) => {
 
-export default Select;
+        const [active, setActive] = useState<boolean>(false)
+
+        const selectedItem = props.items.find(f => f.value === props.value)
+        const toggleItem = () => setActive(!active)
+        // const itemClicked = (value: any) => onC
+        const onItemClick = (value: any) => {
+            props.onChange(value);
+            toggleItem()
+        }
+
+
+        return (
+            <>
+                <div className={s.content}>   {/* +" "+ (active ? s.active : " ")*/}
+                    <h3 onClick={toggleItem}>{selectedItem && selectedItem.title}</h3>
+                    {
+                        active &&
+                        <div className={s.item}>
+                            {props.items.map(m => <div
+                                key={m.value}
+                                onClick={()=> {onItemClick(m.value)}}
+                            >{m.title}</div>)}
+                        </div>
+                    }
+                </div>
+            </>
+        );
+    }
+;
+
