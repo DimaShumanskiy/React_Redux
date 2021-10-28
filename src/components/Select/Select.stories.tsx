@@ -10,7 +10,7 @@ export default {
 };
 
 const Template: Story<SelectPropsType> = (args) => {
-    const [value, setValue] = useState('2')
+    const [value, setValue] = useState('1')
     return <><Select {...args} value={value} onChange={setValue}/></>
 }
 
@@ -20,12 +20,13 @@ WithMode.args = {
         {value: '1', title: 'Minsk'},
         {value: '2', title: 'Moscow'},
         {value: '3', title: 'Kiev'},
+        {value: '4', title: 'v'},
             ]
 }
 
 export const WithoutValue: Story<SelectPropsType> = (args) => {
     const [value, setValue] = useState(null)
-    return <><Select value={null} {...args}/></>
+    return <><Select {...args} value={value} onChange={setValue}/></>
 }
 WithoutValue.args = {
     onChange: action('Value changed'),

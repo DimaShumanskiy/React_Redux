@@ -2,8 +2,10 @@
   border: 1px solid silver;
   width: 120px;
   padding: 5px;
+  border-radius: 5px;
+  text-align: center;
 }
-.item {
+.items {
   position: absolute;
   border: 1px solid silver;
   box-shadow: 0px 7px 10px rgb(0 0 0 / 30%);
@@ -11,8 +13,14 @@
   padding: 5px;
   top: 86px;
   left: 16px;
+  border-radius: 5px;
 }
-
-.content.active .item{
-  display: block;
+.item.selected {
+  background-color: silver;
 }
+/*.element:hover{*/
+/*  background-color: silver;*/
+/*  padding: 2px;*/
+/*  border-radius: 3px;*/
+/*  text-align: center;*/
+/*}*/
