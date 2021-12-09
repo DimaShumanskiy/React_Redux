@@ -9,10 +9,17 @@ export default {
 
 };
 
-const Template: Story<any> = (args) => <Clock {...args} />;  // берем типизацию из компоненты
+const TemplateAnalog: Story<any> = (args) => <Clock {...args} />;  // берем типизацию из компоненты
 
 // ситаксис сторибук 6 версии
-export const ClockMode = Template.bind({})
-ClockMode.args = {
+export const BaseAnalogExample = TemplateAnalog.bind({})
+BaseAnalogExample.args = {
+    mode: 'analog'
+}
+const TemplateDigital: Story<any> = (args) => <Clock {...args} />;  // берем типизацию из компоненты
 
+// ситаксис сторибук 6 версии
+export const BaseDigitalExample = TemplateDigital.bind({})
+BaseDigitalExample.args = {
+    mode: 'digital'
 }
